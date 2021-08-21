@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_food_delivery_app/data/data.dart';
+import 'package:flutter_food_delivery_app/widgets/recent_orders.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -64,6 +65,7 @@ class Home extends StatelessWidget {
               ),
             ),
           ),
+          RecentOrders(),
         ],
       ),
     );
