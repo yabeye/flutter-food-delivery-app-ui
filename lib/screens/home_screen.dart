@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_food_delivery_app/data/data.dart';
+import 'package:flutter_food_delivery_app/widgets/nearby_resturants.dart';
 import 'package:flutter_food_delivery_app/widgets/recent_orders.dart';
 
 class Home extends StatelessWidget {
@@ -66,6 +67,8 @@ class Home extends StatelessWidget {
             ),
           ),
           RecentOrders(),
+          // Near by resturants //
+          NearbyResturant(),
         ],
       ),
     );

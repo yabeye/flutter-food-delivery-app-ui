@@ -14,7 +14,7 @@ class RecentOrders extends StatelessWidget {
         borderRadius: BorderRadius.circular(15.0),
         border: Border.all(
           width: 1.0,
-          color: Colors.white38,
+          color: Colors.black12,
         ),
       ),
       child: Row(
@@ -113,7 +113,7 @@ class RecentOrders extends StatelessWidget {
               physics: BouncingScrollPhysics(),
               padding: EdgeInsets.only(left: 10.0),
               scrollDirection: Axis.horizontal,
-              itemCount: 5,
+              itemCount: currentUser.orders.length,
               itemBuilder: (context, index) {
                 Order order = currentUser.orders[index];
                 return _buildRecentOrders(context, order);
