@@ -28,13 +28,34 @@ class Home extends StatelessWidget {
           TextButton(
               onPressed: () => Navigator.push(
                   context, MaterialPageRoute(builder: (_) => CartScreen())),
-              child: Text(
-                'Cart (${currentUser.orders.length})',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w400,
-                ),
+              child: Stack(
+                children: [
+                  Icon(
+                    Icons.badge_sharp,
+                    size: 35,
+                    color: Colors.white,
+                  ),
+                  Positioned(
+                    top: 0,
+                    right: 0,
+                    child: Container(
+                      width: 20,
+                      height: 15,
+                      margin: EdgeInsets.all(3.0),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      child: Text(
+                        ' ${currentUser.orders.length}',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                            color: Theme.of(context).primaryColor),
+                      ),
+                    ),
+                  )
+                ],
               ))
         ],
       ),
