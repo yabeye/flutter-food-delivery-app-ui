@@ -144,6 +144,9 @@ class _CartScreenState extends State<CartScreen> {
                   value: '\$${_getTotalCost()}',
                   valueColor: Colors.green,
                 ),
+                SizedBox(
+                  height: 100.0,
+                ),
               ],
             );
           },
@@ -157,6 +160,32 @@ class _CartScreenState extends State<CartScreen> {
             );
           },
           itemCount: currentUser.orders.length + 1),
+      bottomSheet: Container(
+        height: 80.0,
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+            color: Theme.of(context).primaryColor,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black26,
+                offset: Offset(0, -1),
+                blurRadius: 6.0,
+              )
+            ],
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(15),
+              topRight: Radius.circular(15),
+            )),
+        child: Center(
+          child: TextButton(
+              onPressed: () {},
+              child: Text(
+                'Checkout',
+                style: TextStyle(
+                    letterSpacing: 2.0, color: Colors.white, fontSize: 24),
+              )),
+        ),
+      ),
     );
   }
 }
