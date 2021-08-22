@@ -13,6 +13,12 @@ class Rating extends StatelessWidget {
             Icons.star,
             size: 20,
             color: Colors.redAccent,
+          ),
+        for (int i = 0; i < (5 - rating); i++)
+          Icon(
+            Icons.star,
+            size: 20,
+            color: Colors.black26,
           )
       ],
     );
