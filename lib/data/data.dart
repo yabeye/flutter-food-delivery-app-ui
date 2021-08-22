@@ -64,11 +64,6 @@ final List<Restaurant> restaurants = [
   _restaurant2,
   _restaurant3,
   _restaurant4,
-  _restaurant0,
-  _restaurant1,
-  _restaurant2,
-  _restaurant3,
-  _restaurant4,
 ];
 
 // User

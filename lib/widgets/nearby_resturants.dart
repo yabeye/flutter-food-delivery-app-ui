@@ -1,36 +1,28 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_food_delivery_app/components/build_rating.dart';
 import 'package:flutter_food_delivery_app/data/data.dart';
 import 'package:flutter_food_delivery_app/models/restaurant.dart';
+import 'package:flutter_food_delivery_app/screens/resturant_screen.dart';
 
 class NearbyResturant extends StatelessWidget {
-  const NearbyResturant({Key? key}) : super(key: key);
+  NearbyResturant({Key? key}) : super(key: key);
 
-  String generateRandomDistance() {
-    String temp = Random().nextDouble().toStringAsFixed(1);
-
-    return '$temp miles away';
-  }
-
-  _buildRaing(int rating) {
-    return Row(
-      children: [
-        for (int i = 0; i < rating; i++)
-          Icon(
-            Icons.star,
-            size: 20,
-            color: Colors.redAccent,
-          )
-      ],
-    );
-  }
+  final String getGeographicDistanceDifference =
+      Random().nextDouble().toStringAsFixed(1).toString();
 
   Widget _buildNearByResturants(BuildContext context) {
     List<Widget> nearbyResturatsList = [];
     restaurants.forEach((Restaurant restaurant) {
       nearbyResturatsList.add(GestureDetector(
-        onTap: () => print('going to a resurant page ... '),
+        onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (_) => ResturantScreen(
+                      restaurant: restaurant,
+                      distance: getGeographicDistanceDifference,
+                    ))),
         child: Container(
           margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
           decoration: BoxDecoration(
@@ -46,11 +38,14 @@ class NearbyResturant extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(15.0),
-                child: Image(
-                  image: AssetImage(restaurant.imageUrl),
-                  width: 150,
-                  height: 150,
-                  fit: BoxFit.cover,
+                child: Hero(
+                  tag: restaurant.imageUrl,
+                  child: Image(
+                    image: AssetImage(restaurant.imageUrl),
+                    width: 150,
+                    height: 150,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
               Expanded(
@@ -69,8 +64,7 @@ class NearbyResturant extends StatelessWidget {
                       SizedBox(
                         height: 4.0,
                       ),
-                      // Rating will go here //
-                      _buildRaing(restaurant.rating),
+                      Rating(rating: restaurant.rating),
                       SizedBox(
                         height: 4.0,
                       ),
@@ -84,7 +78,7 @@ class NearbyResturant extends StatelessWidget {
                         height: 4.0,
                       ),
                       Text(
-                        generateRandomDistance(),
+                        '$getGeographicDistanceDifference miles away.',
                         style: TextStyle(
                             fontSize: 14, fontWeight: FontWeight.w800),
                         overflow: TextOverflow.ellipsis,

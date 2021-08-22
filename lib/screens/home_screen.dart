@@ -50,6 +50,12 @@ class Home extends StatelessWidget {
                 prefixIcon: Icon(
                   Icons.search,
                   size: 30.0,
+                  color: Theme.of(context).primaryColor,
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30.0),
+                  borderSide: BorderSide(
+                      width: 0.8, color: Theme.of(context).primaryColor),
                 ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(30.0),
@@ -62,6 +68,7 @@ class Home extends StatelessWidget {
                 ),
                 suffixIcon: Icon(
                   Icons.clear,
+                  color: Colors.black38,
                   //size: 20.0,
                 ),
               ),

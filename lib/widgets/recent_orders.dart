@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_food_delivery_app/data/data.dart';
 import 'package:flutter_food_delivery_app/models/order.dart';
+import 'package:flutter_food_delivery_app/widgets/add_item.dart';
 
 class RecentOrders extends StatelessWidget {
   const RecentOrders({Key? key}) : super(key: key);
@@ -70,22 +71,7 @@ class RecentOrders extends StatelessWidget {
               ],
             ),
           ),
-          Container(
-            width: 48,
-            height: 48,
-            margin: EdgeInsets.only(right: 20.0),
-            decoration: BoxDecoration(
-              color: Theme.of(context).primaryColor,
-              borderRadius: BorderRadius.circular(30.0),
-            ),
-            child: IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.add,
-                  color: Colors.white,
-                  size: 30,
-                )),
-          ),
+          AddItem(),
         ],
       ),
     );
