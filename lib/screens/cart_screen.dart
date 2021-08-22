@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_food_delivery_app/data/data.dart';
 import 'package:flutter_food_delivery_app/models/order.dart';
+import 'package:flutter_food_delivery_app/screens/cart_summary.dart';
 import 'package:flutter_food_delivery_app/widgets/cart_operation.dart';
 
 class CartScreen extends StatefulWidget {
@@ -11,6 +12,14 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
+  _getTotalCost() {
+    double total = 0;
+    currentUser.orders
+        .forEach((order) => total += order.quantity * order.food.price);
+
+    return total.toStringAsFixed(2);
+  }
+
   Widget _buildCartItem(Order order) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
@@ -119,8 +128,24 @@ class _CartScreenState extends State<CartScreen> {
       body: ListView.separated(
           physics: BouncingScrollPhysics(),
           itemBuilder: (context, index) {
-            Order order = currentUser.orders[index];
-            return _buildCartItem(order);
+            if (index < currentUser.orders.length) {
+              Order order = currentUser.orders[index];
+              return _buildCartItem(order);
+            }
+            return Column(
+              children: [
+                CartSummary(
+                  title: 'Estimated Delivery Time :',
+                  value: '25 min',
+                  valueColor: Colors.black,
+                ),
+                CartSummary(
+                  title: 'Total Cost :',
+                  value: '\$${_getTotalCost()}',
+                  valueColor: Colors.green,
+                ),
+              ],
+            );
           },
           separatorBuilder: (context, index) {
             return Padding(
@@ -131,7 +156,7 @@ class _CartScreenState extends State<CartScreen> {
               ),
             );
           },
-          itemCount: currentUser.orders.length),
+          itemCount: currentUser.orders.length + 1),
     );
   }
 }
