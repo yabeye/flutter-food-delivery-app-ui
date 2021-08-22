@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_food_delivery_app/data/data.dart';
+import 'package:flutter_food_delivery_app/screens/cart_screen.dart';
 import 'package:flutter_food_delivery_app/widgets/nearby_resturants.dart';
 import 'package:flutter_food_delivery_app/widgets/recent_orders.dart';
 
@@ -25,7 +26,8 @@ class Home extends StatelessWidget {
         centerTitle: true,
         actions: [
           TextButton(
-              onPressed: () => print('Cart '),
+              onPressed: () => Navigator.push(
+                  context, MaterialPageRoute(builder: (_) => CartScreen())),
               child: Text(
                 'Cart (${currentUser.orders.length})',
                 style: TextStyle(
