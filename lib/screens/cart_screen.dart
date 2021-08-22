@@ -13,11 +13,13 @@ class CartScreen extends StatefulWidget {
 
 class _CartScreenState extends State<CartScreen> {
   _getTotalCost() {
-    double total = 0;
+    // To get the total cost we have to loop throw all orders
+    // quantity multiply by each food price
+    double total = 0.0;
     currentUser.orders
         .forEach((order) => total += order.quantity * order.food.price);
 
-    return total.toStringAsFixed(2);
+    return total.toStringAsFixed(2); // To round the price in cents(0.0)
   }
 
   Widget _buildCartItem(Order order) {
@@ -136,7 +138,8 @@ class _CartScreenState extends State<CartScreen> {
               children: [
                 CartSummary(
                   title: 'Estimated Delivery Time :',
-                  value: '25 min',
+                  value:
+                      '25 min', // this has to deal with the back end so i will leave it //
                   valueColor: Colors.black,
                 ),
                 CartSummary(
@@ -161,6 +164,7 @@ class _CartScreenState extends State<CartScreen> {
           },
           itemCount: currentUser.orders.length + 1),
       bottomSheet: Container(
+        // UI for the checkout logic //
         height: 80.0,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(

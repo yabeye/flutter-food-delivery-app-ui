@@ -2,22 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 import 'package:flutter_food_delivery_app/components/build_rating.dart';
-import 'package:flutter_food_delivery_app/data/data.dart';
 import 'package:flutter_food_delivery_app/models/food.dart';
 import 'package:flutter_food_delivery_app/models/restaurant.dart';
 import 'package:flutter_food_delivery_app/widgets/add_item.dart';
+import 'package:flutter_food_delivery_app/widgets/rounded_button.dart';
 
 class ResturantScreen extends StatefulWidget {
-  final Restaurant restaurant;
+  final Restaurant resturant;
   final distance;
 
   const ResturantScreen(
-      {Key? key, required this.restaurant, required this.distance})
+      {Key? key, required this.resturant, required this.distance})
       : super(key: key);
 
   @override
   _ResturantScreenState createState() =>
-      _ResturantScreenState(restaurant: restaurant, distance: distance);
+      _ResturantScreenState(restaurant: resturant, distance: distance);
 }
 
 class _ResturantScreenState extends State<ResturantScreen> {
@@ -109,7 +109,8 @@ class _ResturantScreenState extends State<ResturantScreen> {
           Stack(
             children: [
               Hero(
-                tag: widget.restaurant.imageUrl,
+                // I use resturant's image url as an id #
+                tag: widget.resturant.imageUrl,
                 child: Image(
                   image: AssetImage(restaurant.imageUrl),
                   height: 220,
@@ -118,6 +119,7 @@ class _ResturantScreenState extends State<ResturantScreen> {
                 ),
               ),
               Container(
+                // Container to add a shading effect on the resturant image
                 width: MediaQuery.of(context).size.width,
                 height: 220,
                 decoration: _decorationShade,
@@ -128,6 +130,7 @@ class _ResturantScreenState extends State<ResturantScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     IconButton(
+                      // Back to the Home screen
                       onPressed: () => Navigator.pop(context),
                       icon: Icon(
                         Icons.arrow_back,
@@ -136,6 +139,7 @@ class _ResturantScreenState extends State<ResturantScreen> {
                       ),
                     ),
                     IconButton(
+                        // Add to or remove from favourite
                         onPressed: _swapFavourite,
                         icon: Icon(
                           isFavourite ? Icons.favorite : Icons.favorite_border,
@@ -218,31 +222,6 @@ class _ResturantScreenState extends State<ResturantScreen> {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class RoundedButton extends StatelessWidget {
-  final text;
-  final VoidCallback onpressed;
-  const RoundedButton({
-    Key? key,
-    required this.text,
-    required this.onpressed,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: onpressed,
-      child: Text(text, style: TextStyle(color: Colors.white, fontSize: 18.0)),
-      style: TextButton.styleFrom(
-        padding: EdgeInsets.symmetric(horizontal: 35.0, vertical: 8.0),
-        backgroundColor: Theme.of(context).primaryColor,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12.0),
-        ),
       ),
     );
   }

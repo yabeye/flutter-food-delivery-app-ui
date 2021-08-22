@@ -71,7 +71,7 @@ class RecentOrders extends StatelessWidget {
               ],
             ),
           ),
-          AddItem(),
+          AddItem(), // Circular container (with iconbutton) to add food to the cart.
         ],
       ),
     );

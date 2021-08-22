@@ -9,16 +9,26 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: non_constant_identifier_names
+    OutlineInputBorder _focus_and_enabled_border_style = OutlineInputBorder(
+      borderRadius: BorderRadius.circular(30.0),
+      borderSide: BorderSide(width: 0.8, color: Theme.of(context).primaryColor),
+    );
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
         leading: IconButton(
+            /** ToDo on clicking this button
+             * 1. get the current user if he/she already signup and change the widget to profile image
+             * 2. or navidate the user to sign up page
+             */
             onPressed: () => print('Current user is ${currentUser.name}'),
             icon: Icon(
               Icons.account_circle,
               size: 30,
             )),
         title: Text(
+          // This is just my sax off :)
           "Yabe Delivery",
           style: TextStyle(
               fontWeight: FontWeight.bold, letterSpacing: 1.2, fontSize: 24),
@@ -31,6 +41,7 @@ class Home extends StatelessWidget {
               child: Stack(
                 children: [
                   Icon(
+                    // This needs to be changed to cart icon from fontawesome icons //
                     Icons.badge_sharp,
                     size: 35,
                     color: Colors.white,
@@ -65,6 +76,10 @@ class Home extends StatelessWidget {
           Padding(
             padding: EdgeInsets.all(20.0),
             child: TextField(
+              // This is Search Food or Resturants Widget.
+              // UI is not completed, b/c when scroling back it has to appear
+              // while you are mid way there.
+
               decoration: InputDecoration(
                 contentPadding: EdgeInsets.symmetric(vertical: 15.0),
                 fillColor: Colors.white,
@@ -75,20 +90,12 @@ class Home extends StatelessWidget {
                   size: 30.0,
                   color: Theme.of(context).primaryColor,
                 ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30.0),
-                  borderSide: BorderSide(
-                      width: 0.8, color: Theme.of(context).primaryColor),
-                ),
+                focusedBorder: _focus_and_enabled_border_style,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(30.0),
                   borderSide: BorderSide(width: 0.8),
                 ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30.0),
-                  borderSide: BorderSide(
-                      width: 0.8, color: Theme.of(context).primaryColor),
-                ),
+                enabledBorder: _focus_and_enabled_border_style,
                 suffixIcon: Icon(
                   Icons.clear,
                   color: Colors.black38,

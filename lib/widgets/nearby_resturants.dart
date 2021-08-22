@@ -20,7 +20,7 @@ class NearbyResturant extends StatelessWidget {
             context,
             MaterialPageRoute(
                 builder: (_) => ResturantScreen(
-                      restaurant: restaurant,
+                      resturant: restaurant,
                       distance: getGeographicDistanceDifference,
                     ))),
         child: Container(
