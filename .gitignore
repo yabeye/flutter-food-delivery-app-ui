@@ -44,6 +44,3 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
-
-# screenshots for github should be ignored
-screenshots/
