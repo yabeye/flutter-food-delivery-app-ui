@@ -3,6 +3,7 @@ import 'package:flutter_food_delivery_app/data/data.dart';
 import 'package:flutter_food_delivery_app/screens/cart_screen.dart';
 import 'package:flutter_food_delivery_app/widgets/nearby_resturants.dart';
 import 'package:flutter_food_delivery_app/widgets/recent_orders.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -41,9 +42,8 @@ class Home extends StatelessWidget {
               child: Stack(
                 children: [
                   Icon(
-                    // This needs to be changed to cart icon from fontawesome icons //
-                    Icons.badge_sharp,
-                    size: 35,
+                    FontAwesomeIcons.cartPlus,
+                    size: 30,
                     color: Colors.white,
                   ),
                   Positioned(
@@ -51,8 +51,8 @@ class Home extends StatelessWidget {
                     right: 0,
                     child: Container(
                       width: 20,
-                      height: 15,
-                      margin: EdgeInsets.all(3.0),
+                      height: 20,
+                      //margin: EdgeInsets.all(3.0),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(15.0),
